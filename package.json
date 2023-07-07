@@ -1,0 +1,43 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@types/node": "^18",
+    "nuxt": "^3.6.1",
+    "@nuxtjs/tailwindcss": "^6.6.6",
+    "nuxt-icon": "^0.4.1",
+    "nuxt-quasar-ui": "^1.6.0",
+    "sass": "^1.62.1",
+    "sass-loader": "10"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.13.6",
+    "@quasar/extras": "^1.16.2",
+    "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
+    "aes-decrypter": "^4.0.1",
+    "autoprefixer": "^10.4.14",
+    "dotenv": "^10.0.0",
+    "install": "^0.13.0",
+    "js-video-url-parser": "^0.5.1",
+    "m3u8-parser": "^6.0.0",
+    "mpd-parser": "^1.1.1",
+    "mux.js": "^6.3.0",
+    "npm": "^9.6.4",
+    "nuxt-video-player": "^1.0.17",
+    "postcss": "^8.4.23",
+    "postcss-custom-properties": "^13.1.5",
+    "quasar": "^2.11.10",
+    "tailwindcss": "^3.3.2",
+    "video.js": "^8.0.4",
+    "videojs-youtube": "^3.0.0",
+    "vue-video-player": "^6.0.0"
+  }
+}
