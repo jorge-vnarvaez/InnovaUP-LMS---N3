@@ -1,6 +1,6 @@
 <template>
     <q-footer>
-        <q-toolbar class="bg-slate-500">
+        <q-toolbar class="bg-orange-500">
 
             <div class="w-full">
                 <div class="flex md:flex-row no-wrap py-5">
@@ -42,7 +42,7 @@
 
                 
                 </div>
-                <q-separator color="grey" spaced="lg"></q-separator>
+                <q-separator color="orange" spaced="lg"></q-separator>
                 <div class="row w-full pb-5">
                     <div class="text-xs text-white">Si necesitas ayuda con la plataforma contáctanos a </div>
                     <q-space></q-space>

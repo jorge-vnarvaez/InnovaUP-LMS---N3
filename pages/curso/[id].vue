@@ -12,15 +12,27 @@
                     <!-- <div class="p-8 font-bold text-slate-800">{{ curso.extracto }}</div> -->
                 </div>
 
-                <span v-if="curso.material && curso.material.length > 0">
-                  <!-- <q-separator spaced="xl"></q-separator> -->
-                  <div class="font-sans bg-slate-100 p-5 rounded-lg">
-                    <div class="mb-3 font-bold">Archivos Curso</div>
-                    <div class="flex flex-col gap-2">
-                      <CoreFile v-for="(archivo, index) in curso.material" :key="index+'a'" :data="archivo" />
+                <div class="grid grid-cols-12 gap-10 py-5">
+                  <span v-if="curso.material && curso.material.length > 0" class="col-span-12 lg:col-span-8">
+                    <!-- <q-separator spaced="xl"></q-separator> -->
+                    <div class="font-sans bg-slate-100 p-5 rounded-lg">
+                      <div class="mb-3 font-bold">Archivos Curso</div>
+                      <div class="flex flex-col gap-2">
+                        <CoreFile v-for="(archivo, index) in curso.material" :key="index+'a'" :data="archivo" />
+                      </div>
                     </div>
-                  </div>
-                </span>
+                  </span>
+
+                  <!-- <span class="col-span-12 lg:col-span-4">
+                    <div class="font-sans bg-slate-100 p-5 rounded-lg">
+                      <div class="mb-3 font-bold">Conexión</div>
+                      <div class="flex flex-col gap-2">
+                        <CoreDate :data="curso.fecha_sesion" />
+                      </div>
+                    </div>
+                  </span> -->
+                </div>
+
 
             </div>
             <div class="md:col-span-2 font-sans text-lg" v-html="curso.descripcion"></div>
