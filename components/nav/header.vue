@@ -8,7 +8,7 @@
         <q-space />
         <div class="flex gap-3">
             <!-- <auth-status-button /> -->
-            <!-- <sign-up-button /> -->
+            <sign-up-button />
             <sign-in-button />
             <user-nav />
         </div>

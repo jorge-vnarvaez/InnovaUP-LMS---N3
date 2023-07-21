@@ -44,7 +44,7 @@
   </div>
 
 
-  <div class="font-sans font-medium text-lg">Nombre empresa</div>
+  <!-- <div class="font-sans font-medium text-lg">Nombre empresa</div>
         <q-input
         class="col"
         outlined
@@ -113,7 +113,7 @@
   :style="{
       width: '100%'
   }"
-  />
+  /> -->
 
 
 
@@ -237,9 +237,9 @@ const res = await register({
   password: password.value,
   first_name: first_name.value,
   last_name: last_name.value,
-  nombre_empresa: nombre_empresa.value,
-  principal_problema: principal_problema.value,
-  facturacion_anual: facturacion_anual.value.id,
+  // nombre_empresa: nombre_empresa.value,
+  // principal_problema: principal_problema.value,
+  // facturacion_anual: facturacion_anual.value.id,
 })
 
 if(res?.data){
@@ -248,9 +248,9 @@ if(res?.data){
     password: password.value,
     first_name: first_name.value,
     last_name: last_name.value,
-    nombre_empresa: nombre_empresa.value,
-    principal_problema: principal_problema.value,
-    facturacion_anual: facturacion_anual.value.id,
+    // nombre_empresa: nombre_empresa.value,
+    // principal_problema: principal_problema.value,
+    // facturacion_anual: facturacion_anual.value.id,
   })
   emit('signUpSuccessData', res.data)
 }

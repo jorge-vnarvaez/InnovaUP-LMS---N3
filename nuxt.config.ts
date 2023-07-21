@@ -33,7 +33,8 @@ export default defineNuxtConfig({
     quasar: {
       extras: {
         fontIcons: ['material-icons']
-      }
+      },
+      lang: 'es'
     },
     css: [
         "@/assets/scss/main.scss",

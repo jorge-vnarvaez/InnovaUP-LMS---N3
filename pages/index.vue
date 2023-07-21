@@ -9,12 +9,12 @@
                     </div>
                 </div>
                 <div class="col-span-2">
-                    <q-img loading class="bg-deep-orange-1" height="350px" :src="url_portada"></q-img>
+                    <q-img loading  height="350px" :src="url_portada"></q-img>
                 </div>
             </div>
             <show-logged-in>
                 <q-separator spaced="xl" color=""></q-separator>
-                <TypesCursoListaCursos />
+                <TypesProgramaListaProgramas />
             </show-logged-in>
         </q-page> 
     </div>

@@ -56,8 +56,8 @@
   </div>
 
   <div class="flex gap-1 justify-between underline text-entel-azul text-[16px]">
-    <div><nuxt-link class="font-semibold" :to="`${requestPasswordTo ? requestPasswordTo : '/request-password'}`">Olvidé mi clave</nuxt-link></div>
-    <div><nuxt-link class="font-semibold" :to="`${signUpTo ? signUpTo : '/sign-up'}`">No tengo cuenta</nuxt-link></div>
+    <!-- <div><nuxt-link class="font-semibold" :to="`${requestPasswordTo ? requestPasswordTo : '/request-password'}`">Olvidé mi clave</nuxt-link></div>
+    <div><nuxt-link class="font-semibold" :to="`${signUpTo ? signUpTo : '/sign-up'}`">No tengo cuenta</nuxt-link></div> -->
     <!-- <div>¿Aún no tienes cuenta? <nuxt-link class="font-semibold" :to="`${signUpTo ? signUpTo : '/sign-up'}`">Regístrate</nuxt-link></div> -->
     <!-- <div>¿Olvidaste tu contraseña? <nuxt-link class="font-semibold" :to="`${requestPasswordTo ? requestPasswordTo : '/request-password'}`">Recuperar contraseña</nuxt-link></div> -->
   </div>

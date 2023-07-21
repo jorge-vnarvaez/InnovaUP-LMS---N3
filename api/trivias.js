@@ -1,21 +1,19 @@
-// ~/api/programas.js
 import { apiConfig } from '~/composables/apiConfig'
 import query from '~/plugins/db/schema'
 import objectToQueryString from '~/plugins/objectToQueryString/objectToQueryString'
 
-export async function fetchContenido(idPrograma) {
+export async function fetchTrivia(idTrivia) {
     const { apiBaseURL } = apiConfig()
     const { access_token } = authStore()
+
     const params = objectToQueryString({
         fields: [
-            ...query('lms/contenido_modulo/base'),
-            // ...query('lms/contenido_modulo/base', 'trivia.titulo'),
-            ...query('core/file/base','material.directus_files_id'),
-            ...query('core/file/base','pdf_guia'),
+            ...query('lms/trivia/base'),
         ],
         sort: ['sort'],
     })
-    const response = await fetch(`${apiBaseURL}/items/contenidos_modulos/${idPrograma}?${params}`,{
+
+    const response = await fetch(`${apiBaseURL}/items/trivias/${idTrivia}?${params}`,{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -23,5 +21,5 @@ export async function fetchContenido(idPrograma) {
         }
     })
     return await response.json()
+
 }
-  

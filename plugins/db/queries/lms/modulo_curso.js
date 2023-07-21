@@ -5,5 +5,8 @@ export default {
         'descripcion',
         'sort',
         'id',
+        'fecha_sesion',
+        'link_zoom',
+        'trivia'
     ]
 }

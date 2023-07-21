@@ -10,7 +10,7 @@
               <!-- Tarjeta principal -->
               <div class="w-full md:min-w-[350px] md:w-[350px]">
                   <div class="border-2 border-slate-300 rounded-lg overflow-hidden">
-                      <CardThumbnail height="150px" :foto="programa.foto_tarjeta" />
+                      <CardThumbnail width="100%" height="180px" :foto="programa.foto_tarjeta" />
                       <div class="text-md p-8 font-bold">{{ programa.extracto }}</div>
                   </div>
 
@@ -36,7 +36,7 @@
 
         <q-separator spaced class="p-[1px]" color="orange"></q-separator>
         <div class="text-3xl font-sans font-bold">Cursos del programa</div>
-        <scrollable :n="programa.cursos.length" 
+        <scrollable v-if="programa.cursos" :n="programa.cursos.length" 
             gap="15px" class="py-5"
             el-min-height="300px" el-min-width="350px" el-max-width="350px" snap min-height="400px" width="100%" x-scroll>
             <types-curso-card-curso

@@ -1,5 +1,5 @@
 <template>
-      <q-img v-if="foto?.filename_disk" :src="`${url_foto_tarjeta}`" :height="height"></q-img>
+      <q-img v-if="foto?.filename_disk" :src="`${url_foto_tarjeta}`" :height="height" width="320px" class="border"></q-img>
 </template>
   
 <script setup>

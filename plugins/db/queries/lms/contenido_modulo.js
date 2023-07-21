@@ -8,5 +8,6 @@ export default {
         'url_video',
         'link_externo',
         'es_publico',
+        'trivia'
     ]
 }

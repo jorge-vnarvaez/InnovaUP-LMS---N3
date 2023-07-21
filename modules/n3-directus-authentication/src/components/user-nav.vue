@@ -29,6 +29,10 @@
                 <q-item clickable v-close-popup to="/my-profile">
                     <q-item-section class="text-bold">Mi Perfil</q-item-section>
                 </q-item>
+
+                <q-item clickable v-close-popup to="/">
+                    <q-item-section class="text-bold">Programas</q-item-section>
+                </q-item>
                     
                 
                 <q-item clickable v-close-popup @click="onSubmit">

@@ -2,7 +2,10 @@
     <q-page padding class="bg-slate-100">
       <div v-if="loading">Cargando...</div>
       <div v-else>
-        <h1 class="text-3xl font-sans font-bold text-slate-800 mb-5">{{ contenido.nombre }}</h1>
+        <h1 class="text-3xl font-sans font-bold text-slate-800 mb-2">{{ contenido.nombre }}</h1>
+        <p v-if="contenido.formato === 'trivia'" class="text-slate-500 mb-5">
+          {{ contenido.extracto }}
+        </p>
         
         
         <!-- <VideoPlayer  :src="contenido.url_video" type="video/youtube" provider="youtube" /> -->
@@ -13,9 +16,11 @@
             <VideoPlayer v-if="contenido?.pdf_guia && !contenido?.url_video" 
             :data="contenido.pdf_guia" pdf :ratio="16/9" />
 
+            <TriviaForm v-if="contenido?.formato === 'trivia'" :data="contenido.trivia" />
+
           </div>
            
-          <div class="basis-1/4 md:px-3">
+          <div v-if="contenido.formato !== 'trivia'" class="basis-1/4 md:px-3">
             <div class="p-2 bg-white border rounded-lg overflow-hidden">
               
               <q-card-section>
