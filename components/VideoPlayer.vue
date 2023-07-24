@@ -48,7 +48,6 @@ const embed_id = computed(() => {
 
     if(!props.pdf && !props.img) {
         const resUrl = $urlParser.parse(inputUrl)
-        console.log('resUrl', resUrl)
 
         if(resUrl.provider == 'youtube') return `https://www.youtube.com/embed/${$urlParser.parse(inputUrl).id}`
         if(resUrl.provider == 'vimeo') return `https://player.vimeo.com/video/${$urlParser.parse(inputUrl).id}`

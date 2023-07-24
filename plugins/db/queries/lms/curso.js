@@ -1,5 +1,9 @@
 export default {
     base: ['nombre','extracto','descripcion',
-           'sort','id', 'etiquetas'
+            'foto_portada', 
+           'sort','id', 
+           'seccion.text_color',
+           'seccion.color_from',
+           'seccion.blocks.blocks_id.*.*.*'
     ],
 }

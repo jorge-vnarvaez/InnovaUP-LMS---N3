@@ -1,8 +1,7 @@
 <template>
     <q-page padding class="bg-slate-100">
       <div v-if="loading">Cargando programa...</div>
-      <div v-else>
-        <!-- <pre>{{ programa }}</pre> -->
+      <div v-if="!loading && programa">
         <h1 class="text-5xl font-sans text-slate-800 font-bold">{{ programa.nombre }}</h1>
         <div class="pb-10 pt-5">
           <div class="grid md:flex md:grid-cols-3 gap-10">
@@ -23,7 +22,6 @@
                       </div>
                     </div>
                   </span>
-
               </div>
               <!-- Tarjeta principal -->
               <div class="md:col-span-2">
@@ -45,10 +43,9 @@
             :descripcion="curso.cursos_id.descripcion" :id="curso.cursos_id.id"
             :extracto="curso.cursos_id.extracto" :foto_tarjeta="curso.cursos_id.foto_tarjeta"></types-curso-card-curso>
         </scrollable>
-
       </div>
     </q-page>
-  </template>
+</template>
   
 <script setup>
   import { ref, onMounted } from 'vue'

@@ -5,7 +5,7 @@
     </q-page>
 
     <div v-else>
-      <div class="bg-slate-900 text-white md:h-[450px] lg:h-[250px]">
+      <div v-if="!curso.seccion" class="bg-slate-900 text-white md:h-[450px] lg:h-[250px]">
         <q-page padding>
           <div class="grid md:grid-flow-row md:grid-cols-3 lg:grid-cols-12 py-5">
             <div class="col-span-12 lg:col-span-6">
@@ -17,6 +17,13 @@
           </div>
         </q-page>
       </div>
+
+      <div v-if="curso.seccion">
+        <div class="grid grid-cols-12" :style="{ color: curso.seccion.text_color, backgroundColor: curso.seccion.color_from }">
+          <block v-for="block in curso.seccion.blocks" :key="block.blocks_id.id" :block="block.blocks_id" :data="curso" />
+        </div>
+      </div>
+
       <q-page padding class="bg-slate-100">
       <div>
         <div class="grid md:grid-flow-row md:grid-cols-3 lg:gap-10 py-5 lg:py-0">
@@ -80,7 +87,7 @@
                                                           <div v-if="contenido.contenidos_modulos_id.formato != 'link'" class="text-md font-sans">{{ contenido.contenidos_modulos_id.extracto }}</div>
                                                           <div v-if="contenido.contenidos_modulos_id.formato == 'link' &&  !diasSesion(modulo)" class="text-md font-sans">{{ contenido.contenidos_modulos_id.extracto }}</div>
                                                           <div v-if="contenido.contenidos_modulos_id.formato == 'link' &&  diasSesion(modulo)" class="text-md font-sans">
-                                                            La sesión se llevará a cabo el {{ date.formatDate(modulo.modulos_cursos_id.fecha_sesion, 'DD/MM/YYYY') }}, hasta entonces te invitamos a revisar el material de apoyo.
+                                                            La sesión se llevará a cabo el {{ date.formatDate(modulo.modulos_cursos_id.fecha_sesion, 'DD/MM/YYYY [a las] HH:mm [hrs]') }}, hasta entonces te invitamos a revisar el material de apoyo.
                                                           </div>
                                                       </div>
                                                       <div class="mx-auto"></div>
