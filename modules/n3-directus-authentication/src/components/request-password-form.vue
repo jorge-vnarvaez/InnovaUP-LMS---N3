@@ -100,7 +100,6 @@ import { ref, watch } from 'vue'
         email:    email.value,
         resetPasswordTo: props.resetPasswordTo,
       }, props.preUrl)
-      console.log('testresetpassword',res)
 
       if(res?.ok == true && res?.status == 204){
         success.value = true

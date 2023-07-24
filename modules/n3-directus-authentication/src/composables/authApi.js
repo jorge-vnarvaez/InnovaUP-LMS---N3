@@ -243,8 +243,6 @@ const register = async (credentials = {
         return sign_up['204']
     } catch (error) {
         // TODO: Enviar notificación de error
-        console.log('error de registro')
-        console.log(error)
     }
 
     return response

@@ -175,7 +175,6 @@ const directus_is_author = async({
         };
 
         if (target_debug) {
-            console.log('Filter:', filter);
         }
 
         axios
@@ -187,7 +186,6 @@ const directus_is_author = async({
             })
             .then(function (response) {
                 if (target_debug) {
-                    console.log('Response data:', response.data);
                 }
 
                 if (response.data && response.data.data && response.data.data.length > 0) {

@@ -73,17 +73,14 @@ import { ref, reactive, watch, } from 'vue'
   const signInForm = ref(null)
   const isFormValid = ref(false)
   const onValidationSuccess = () => {
-    console.log('onValidationSuccess')
     isFormValid.value = true
   };
 
   const onValidationError = (ref) => {
-    console.log('onValidationError','ref')
     isFormValid.value = false
   };
 
   const onValidate = (shouldFocus) => {
-    console.log('onValidate', shouldFocus)
   }
   
   const showErrorMessage = ref(false)
