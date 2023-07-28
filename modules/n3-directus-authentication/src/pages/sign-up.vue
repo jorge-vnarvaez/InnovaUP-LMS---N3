@@ -3,7 +3,7 @@
         
         <div class="py-10">
             <div class="inline-flex items-center font-sans font-semibold gap-2 text-lg">
-                <q-img src="/compitelogo.png" width="200px" />
+                <q-img src="/innovuplogo.png" width="200px" />
             </div>
         </div>
         

@@ -52,7 +52,7 @@
       <!-- <nuxt-link to="/" class="font-bold text-uppercase tracking-widest text-slate-600">Volver</nuxt-link> -->
       <!-- <q-space></q-space> -->
       <!-- <q-btn unelevated :label="sign_in_labels.button_label" type="submit" :color="!isFormValid ? `grey-3` : `deep-orange-6`"/> -->
-      <q-btn unelevated ouline color="deep-orange" class="rounded-full w-full font-sans text-capitalize font-medium" :label="sign_in_labels.button_label" type="submit"/>
+      <q-btn unelevated ouline color="brand" class="rounded-full w-full font-sans text-capitalize font-medium" :label="sign_in_labels.button_label" type="submit"/>
   </div>
 
   <div class="flex gap-1 justify-between underline text-entel-azul text-[16px]">

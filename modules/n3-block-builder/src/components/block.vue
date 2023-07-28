@@ -1,15 +1,16 @@
 <template>
-  <div :class="`lg:col-span-${size} p-4`">
+  <div :class="`col-span-${mobile_size} lg:col-span-${size} py-2`">
+    
     <div v-if="['Group'].includes(block.format)" class="grid grid-cols-12">
       <block v-for="child in block.childs" :key="child.id" :block="child" :data="data"></block>
     </div>
 
     <div v-if="['Text'].includes(block.format)">
-      <span :class="[block.font_size, 'font-bold']">{{ text }}</span>
+      <span :class="[block.mobile_font_size, block.font_size, 'font-bold']">{{ text }}</span>
     </div>
 
     <div v-if="['Long Text'].includes(block.format)">
-      <span :class="[block.font_size, 'font-light']">{{ long_text }}</span>
+      <span :class="[block.mobile_font_size, block.font_size, 'font-light']">{{ long_text }}</span>
     </div>
 
     <div v-if="['Image'].includes(block.format)">
@@ -31,7 +32,7 @@ const props = defineProps({
     required: true
   },
   data: {
-    type: String,
+    type: Object,
     required: true
   }
 })
@@ -39,6 +40,14 @@ const props = defineProps({
 const size = computed(() => {
   if (props.block.size) {
     return parseInt(props.block.size)
+  } else {
+    return 12
+  }
+})
+
+const mobile_size = computed(() => {
+  if (props.block.mobile_size) {
+    return parseInt(props.block.mobile_size)
   } else {
     return 12
   }

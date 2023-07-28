@@ -1,6 +1,6 @@
 // composables/user/achievements/actions.js
 import { fetchContenido } from '~/api/contenidos'
-import { fetchTrivia } from '~/api/trivias'
+import { fetchTrivia, checkTrivia } from '~/api/trivias'
 
 export async function getContenido(contenido_id) {
   const response = await fetchContenido(contenido_id)
@@ -9,5 +9,11 @@ export async function getContenido(contenido_id) {
 
 export async function getTrivia(trivia_id) {
   const response = await fetchTrivia(trivia_id)
-  return response.data
+  return response
+}
+
+export async function checkSeleccionadas(trivia_id, seleccionadas) {
+  console.log('checkSeleccionadas', trivia_id, Object.values(seleccionadas))
+  const response = await checkTrivia(trivia_id, seleccionadas)
+  return response
 }

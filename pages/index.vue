@@ -1,5 +1,5 @@
 <template lang="">
-    <div class="bg-slate-100">
+    <div class="bg-slate-100 py-8">
          <q-page padding>
            <div class="grid md:grid-flow-col md:grid-cols-3 gap-4">
                 <div class="font-sans col-span-1 flex no-wrap flex-row my-auto gap-2">

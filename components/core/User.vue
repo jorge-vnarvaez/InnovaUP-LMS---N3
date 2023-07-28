@@ -6,9 +6,8 @@
             </q-avatar>
             <div class="md:p-5 font-sans">
                 <div class="font-sans font-bold text-lg">{{ `${data.directus_users_id.first_name} ${data.directus_users_id.last_name}` }}</div>
-                <div class="font-body text-lg">{{ `${data.directus_users_id.description}` }}</div>
+                <div class="font-body text-lg" v-if="data.directus_users_id.description">{{ `${data.directus_users_id?.description}` }}</div>
             </div>
-        
     </div>
 </template>
 

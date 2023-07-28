@@ -1,6 +1,6 @@
 <template>
     <q-btn v-if="!is_user_logged_in" 
-    outline color="deep-orange" 
+    outline color="teal-14" 
     to="/sign-up">Registro</q-btn>
 </template>
 <script>
