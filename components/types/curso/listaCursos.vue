@@ -9,7 +9,7 @@
             :nombre="curso.nombre"
             :descripcion="curso.descripcion"
             :extracto="curso.extracto"
-            :foto_tarjeta="curso.foto_tarjeta"
+            :foto_tarjeta="curso.generar_foto_con_ia ? curso.foto_tarjeta_ia : curso.foto_tarjeta"
             ></types-curso-card-curso>
         </scrollable>
         <!-- <pre>{{ cursos }}</pre> -->

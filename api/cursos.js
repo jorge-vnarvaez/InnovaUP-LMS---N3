@@ -11,6 +11,7 @@ export async function fetchCursos() {
         fields: [
             ...query('lms/curso/base'),
             ...query('core/file/base','foto_tarjeta'),
+            ...query('core/file/base','foto_tarjeta_ia'),
             ...query('core/file/base','foto_portada'),
             ...query('core/file/base','material.directus_files_id'),
         ],
@@ -41,6 +42,7 @@ export async function fetchCurso(idCurso) {
         fields: [
             ...query('lms/curso/base'),
             ...query('core/file/base','foto_tarjeta'),
+            ...query('core/file/base','foto_tarjeta_ia'),
             ...query('core/file/base','foto_portada'),
             ...query('lms/modulo_curso/base','modulos_cursos.modulos_cursos_id'),
             ...query('lms/contenido_modulo/base','modulos_cursos.modulos_cursos_id.contenidos_modulo.contenidos_modulos_id'),

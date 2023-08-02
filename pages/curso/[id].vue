@@ -9,7 +9,7 @@
                 <div class="grid md:grid-flow-row md:grid-cols-3 gap-10 py-5">
                     <div class="w-full md:min-w-[350px] md:w-[350px]">
                         <div class="border-2 border-slate-300 rounded-lg overflow-hidden">
-                            <CardThumbnail height="200px" width="100%" :foto="curso.foto_tarjeta" />
+                            <CardThumbnail height="200px" width="100%" :foto="curso.generar_foto_con_ia ? curso.foto_tarjeta_ia : curso.foto_tarjeta" />
                             <div class="p-8 font-bold text-slate-800">{{ curso.extracto }}</div>
                         </div>
 

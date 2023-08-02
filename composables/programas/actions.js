@@ -4,12 +4,12 @@ import { programas } from './state'
 
 export async function getProgramas() {
   const response = await fetchProgramas()
-  programas.value = response.data
+  programas.value = response
 }
 
 export async function getPrograma(programa_id) {
   const response = await fetchPrograma(programa_id)
-  return response.data
+  return response
 }
 
 

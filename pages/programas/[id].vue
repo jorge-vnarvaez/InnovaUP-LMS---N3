@@ -9,7 +9,7 @@
               <!-- Tarjeta principal -->
               <div class="w-full md:min-w-[350px] md:w-[350px]">
                   <div class="border-2 border-slate-300 rounded-lg overflow-hidden">
-                      <CardThumbnail width="100%" height="180px" :foto="programa.foto_tarjeta" />
+                      <CardThumbnail width="100%" height="180px" :foto="programa.generar_foto_con_ia ? programa.foto_tarjeta_ia : programa.foto_tarjeta" />
                       <div class="text-md p-8 font-bold">{{ programa.extracto }}</div>
                   </div>
 
@@ -39,9 +39,9 @@
             el-min-height="300px" el-min-width="350px" el-max-width="350px" snap min-height="400px" width="100%" x-scroll>
             <types-curso-card-curso
             v-for="(curso, index) in programa.cursos" :key="index"
-            :nombre="curso.cursos_id.nombre"
-            :descripcion="curso.cursos_id.descripcion" :id="curso.cursos_id.id"
-            :extracto="curso.cursos_id.extracto" :foto_tarjeta="curso.cursos_id.foto_tarjeta"></types-curso-card-curso>
+            :nombre="curso.nombre"
+            :descripcion="curso.descripcion" :id="curso.id"
+            :extracto="curso.extracto" :foto_tarjeta="curso.generar_foto_con_ia ? curso.foto_tarjeta_ia : curso.foto_tarjeta"></types-curso-card-curso>
         </scrollable>
       </div>
     </q-page>

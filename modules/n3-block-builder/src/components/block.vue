@@ -66,8 +66,7 @@ const long_text = computed(() => {
 })
 
 const url_foto_tarjeta = computed(() => {
-  if(!props.data.foto_tarjeta) return null;
-  return `${apiFileURL}/${props.data.foto_tarjeta.filename_disk}`;
+  return `${apiFileURL}/${props.data.generar_foto_con_ia ? props.data.foto_tarjeta_ia?.filename_disk : props.data.foto_tarjeta?.filename_disk}`;
 });
 
 
