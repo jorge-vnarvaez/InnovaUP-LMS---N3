@@ -3,7 +3,7 @@
         <div v-if="loading">Cargando...</div>
         <div v-else class="font-sans">
             <h1 class="text-3xl font-bold text-gray-900 mb-5">Programas</h1>
-            <scrollable v-if="programas" :n="programas.length" 
+            <scrollable v-if="programas && programas.length > 0" :n="programas.length" 
             gap="15px" class="py-5"
             el-min-height="300px" el-min-width="350px" snap min-height="400px" width="350px" max-width="300px" x-scroll>
                 <types-programa-card-programa
