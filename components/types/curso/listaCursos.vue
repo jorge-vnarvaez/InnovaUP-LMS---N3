@@ -2,7 +2,7 @@
     <div>
         <scrollable v-if="cursos" :n="cursos.length" 
         gap="15px" class="py-5"
-        el-min-height="300px" el-min-width="350px" snap min-height="400px" width="100%" x-scroll>
+        el-min-height="300px" el-min-width="350px" el-max-width="350px" snap min-height="100%" width="100%" x-scroll>
             <types-curso-card-curso 
             v-for="(curso, index) in cursos" :key="index"
             :id="curso.id"

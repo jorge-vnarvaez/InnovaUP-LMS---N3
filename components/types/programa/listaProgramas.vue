@@ -5,7 +5,7 @@
             <h1 class="text-3xl font-bold text-gray-900 mb-5">Programas</h1>
             <scrollable v-if="programas && programas.length > 0" :n="programas.length" 
             gap="15px" class="py-5"
-            el-min-height="300px" el-min-width="350px" snap min-height="400px" width="350px" max-width="300px" x-scroll>
+            el-min-height="300px" el-min-width="350px" el-max-width="350px" snap min-height="400px" width="100%" max-width="100%" x-scroll>
                 <types-programa-card-programa
                 v-for="(programa, index) in programas" :key="index"
                 :nombre="programa.nombre"

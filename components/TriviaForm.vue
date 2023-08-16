@@ -1,22 +1,57 @@
 <template>
   <div>
-    <div v-if="loading">Cargando trivia...</div>
+    <div v-if="loading">Cargando...</div>
+    <div v-if="!loading && trivia">
+      <div class="bg-white p-6">
+        <p class="text-xl font-bold mb-2">{{ trivia?.titulo }}</p>
+      </div>
 
-    <div v-if="trivia">
-      <h3 class="text-2xl font-bold">{{ trivia.titulo }}</h3>
 
-      <p v-if="trivia.seleccion_multiple" class="font-sans text-slate-400">Pregunta de selección multiple.</p>
+      <div class="flex justify-between p-6">
+          <div v-if="trivia?.seleccion_multiple" class="font-sans text-slate-500 flex align-center mb-0">
+            Selecciona una o más respuestas correctas
+          </div>
 
-      <q-list v-if="!trivia.seleccion_multiple" class="my-4">
-        <q-item
-          v-for="alternativa in trivia.alternativas"
-          :key="alternativa.alternativas_id.id"
-          tag="label"
-          v-ripple
+          <div v-if="!trivia?.seleccion_multiple" class="font-sans text-slate-500 flex align-center mb-0">
+            Selecciona una respuesta correcta
+          </div>
+
+          <div class="flex space-x-2 lg:space-x-4 mt-2 lg:mt-0">
+            <q-btn @click="showSolution" outline color="blue-grey-9" size="12px">
+              <!-- <Icon name="ri:question-mark" class="mr-2" /> -->
+              Ayuda
+            </q-btn>
+            
+          </div>
+      </div>
+     
+      <div class="bg-white px-6 py-4">
+        <q-option-group
+          v-if="trivia?.seleccion_multiple"
+          v-model="alternativas_seleccionadas"
+          :options="
+            trivia?.alternativas?.map((alternativa) => {
+              return {
+                label: alternativa?.alternativas_id?.titulo,
+                value: alternativa?.alternativas_id?.id,
+              };
+            })
+          "
+          color="blue"
+          type="checkbox"
         >
+        </q-option-group>
+
+        <q-list v-if="!trivia.seleccion_multiple">
+          <q-item
+            v-for="alternativa in trivia.alternativas"
+            :key="alternativa.alternativas_id.id"
+            tag="label"
+            v-ripple
+          >
           <q-item-section>
             <q-radio
-              v-model="selectedAlternative"
+              v-model="alternativa_seleccionada"
               :val="alternativa"
               @update:model-value="alternativaWasSelected"
             >
@@ -29,140 +64,105 @@
           </q-item-section>
         </q-item>
       </q-list>
-
-      <q-option-group
-        v-if="trivia.seleccion_multiple"
-        class="my-4"
-        v-model="alternativasSelected"
-        :options="
-          trivia.alternativas.map((alternativa) => {
-            return {
-              label: alternativa.alternativas_id.titulo,
-              value: alternativa.alternativas_id.id,
-            };
-          })
-        "
-        color="blue"
-        type="checkbox"
-      >
-      </q-option-group>
-
-      <div class="mt-4">
-        <q-btn flat color="blue-grey-10" @click="goBack">Volver</q-btn>
-        <q-btn
-          label="Responder"
-          color="teal"
-          @click="checkAnswer"
-          unelevated
-        ></q-btn>
       </div>
 
-
-      <div
-        v-if="respuestaCorrecta == false"
-        class="bg-red-600 text-white  p-6 lg:p-8  mt-8 rounded"
-      >
-        <p class="text-xl font-bold">Respuesta Incorrecta</p>
-        <span class="block mt-2" v-if="verSolucion">
-          {{ trivia.definicion }}
-        </span>
-
-        <span class="block mt-2" v-if="!verSolucion">
-          Lo sentimos, tu respuesta no es correcta. Vuelve a intentarlo.
-        </span>
-
-        <!-- <q-btn v-if="verSolucion == false" color="green" unelevated class="mt-4 mr-4"  @click="verSolucion = true">
-          <q-icon name="mdi-eye"></q-icon>
-          Ver solución
-        </q-btn> -->
-
-        <q-btn v-if="verSolucion == false" color="green" icon="visibility" unelevated class="mt-4 mr-4" label="Ver Solución"  @click="verSolucion = true" />
-
-        <q-btn v-if="verSolucion == true" color="green" icon="visibility_off" unelevated class="mt-4 mr-4" label="Ocultar"  @click="verSolucion = false" />
-
-
-        <q-btn color="white" class="mt-4" outline @click="nuevoIntento">
-          Volver a intentar
+      <div class="flex space-x-4">
+        <q-btn @click="checkAnswer" color="blue-grey-9" size="12px" class="mt-4 mb-6" unelevated>
+            Responder
         </q-btn>
       </div>
 
-      <div v-if="respuestaCorrecta" class="bg-green-500 text-white p-6 lg:p-8 rounded mt-8">
-        <p class="text-xl font-bold">Felicitaciones!</p>
-        <span class="block mt-2">
-          Haz respondido correctamente este cuestionario.
-        </span>
 
-        <q-btn color="white" class="mt-4" outline @click="goBack">
-          Seguir con el curso
-        </q-btn>
-      </div>
-    </div>
+        <div v-if="mostrar_solucion && respuesta_correcta == null" class="border-2 border-slate-800 p-6 rounded-lg">
+          <p class="text-xl font-bold mb-2">Solución</p>
+          <span class="block">
+            {{ trivia.definicion }}
+          </span>
+          <q-btn color="blue-grey-10" class="mt-4" unelevated @click="nuevoIntento">
+            Volver a intentar
+          </q-btn>
+        </div>
+
+        <div v-if="respuesta_correcta == false" class="border-2 border-red-600 p-6 rounded-lg">
+          <p class="text-xl font-semibold mb-2 text-red-600">Respuesta incorrecta</p>
+          <span class="text-red-600 font-light block">
+            {{ trivia.definicion }}
+          </span>
+           <q-btn color="blue-grey-10" class="mt-4" unelevated @click="nuevoIntento">
+            Volver a intentar
+          </q-btn>
+        </div>
+
+        <div v-if="respuesta_correcta == true" class="border-2 border-green-500 p-6 rounded-lg">
+          <p class="text-xl font-semibold mb-2 text-green-500">Respuesta correcta</p>
+          <q-btn color="green" class="mt-4" unelevated @click="goBack">
+            Seguir con el curso
+          </q-btn>
+        </div>
+     
+    </div> 
   </div>
 </template>
 
 <script setup>
-import { onMounted } from "vue";
-import {
-  getTrivia,
-  checkSeleccionadas,
-} from "~/composables/cursos/modulos/contenidos/actions";
-const { is_user_logged_in, user } = userStore();
-
-const props = defineProps({
-  data: {
-    type: String,
-    required: true,
-  },
-});
-const trivia = ref(null);
-const alternativasSelected = ref([]);
-const selectedAlternative = ref(null);
-const respuestaCorrecta = ref(null);
-const loading = ref(true);
-const verSolucion = ref(false);
+import { useRoute } from "vue-router";
 
 const route = useRouter();
 
+const loading = ref(true);
+const trivia = ref(null);
+const alternativas_seleccionadas = ref([]);
+const alternativa_seleccionada = ref(null);
+const respuesta_correcta = ref(null);
+const mostrar_solucion = ref(false);
+import { getTrivia, checkSeleccionadas } from '~/composables/cursos/modulos/contenidos/actions.js'
+
+const props = defineProps({
+  data: {
+    type: Object,
+    required: true,
+  },
+});
+
 onMounted(async () => {
   try {
-    trivia.value = await getTrivia(props.data);
+    const data = await getTrivia(props.data);
+    trivia.value = data;
   } catch (error) {
-    console.error(error);
+    console.log(error);
   } finally {
     loading.value = false;
   }
 });
 
-definePageMeta({
-  middleware: ["is-user-logged-in"],
-});
+const showSolution = () => {
+    respuesta_correcta.value = null;
+    mostrar_solucion.value = !mostrar_solucion.value;
+}
 
-const alternativaWasSelected = async (alternativa) => {
-  selectedAlternative.value = alternativa;
-
-  if (!trivia.seleccion_multiple) {
-    alternativasSelected.value = [];
-    alternativasSelected.value.push(alternativa.alternativas_id.id);
-  }
+const alternativaWasSelected = (alternativa) => {
+  alternativas_seleccionadas.value = [];
+  alternativas_seleccionadas.value.push(alternativa?.alternativas_id?.id);
 };
 
 const checkAnswer = async () => {
-  respuestaCorrecta.value = await checkSeleccionadas(
+  mostrar_solucion.value = false;
+  respuesta_correcta.value = await checkSeleccionadas(
     trivia.value.id,
-    alternativasSelected.value
-  ).then((res) => {
-    return res.json();
-  });
+    alternativas_seleccionadas.value
+  ).then((res) =>  res.json())
+};
+
+
+function goBack() {
+   route.back()
 };
 
 function nuevoIntento() {
-  respuestaCorrecta.value = null;
-  alternativasSelected.value = [];
-  selectedAlternative.value = null;
-}
-
-function goBack() {
-  route.back();
+  mostrar_solucion.value = false;
+  respuesta_correcta.value = null;
+  alternativas_seleccionadas.value = [];
+  alternativa_seleccionada.value = null;
 }
 </script>
 
